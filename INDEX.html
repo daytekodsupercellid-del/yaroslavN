@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Practice</title>
+<style>
+:root{
+    --bg:#f4f4f4;
+    --card:#ffffff;
+    --text:#222;
+}
+body{
+    margin:0;
+    font-family: system-ui;
+    background:var(--bg);
+    color:var(--text);
+    text-align:center;
+}
+.dark{
+    --bg:#1e1e1e;
+    --card:#2a2a2a;
+    --text:#fff;
+}
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:10px;
+}
+.card{
+    background:var(--card);
+    padding:15px;
+    margin:10px;
+    border-radius:12px;
+    width:280px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:.2s;
+}
+.card:hover{transform:translateY(-5px);}
+input,select,button{
+    margin:5px;
+    padding:8px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    width:90%;
+}
+button{cursor:pointer;background:#4caf50;color:#fff;border:none;}
+.output{margin-top:8px;font-weight:bold;}
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    padding:10px;
+}
+.confetti{
+    position:fixed;
+    width:8px;
+    height:8px;
+    background:red;
+    top:0;
+    animation:fall 2s linear forwards;
+}
+@keyframes fall{
+    to{transform:translateY(100vh) rotate(360deg);opacity:0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div>🏆 Очки: <span id="score">0</span></div>
+<button onclick="toggleTheme()">🌙/☀️</button>
+</div>
+
+<h2>Практика JS</h2>
+<div class="container">
+
+<div class="card">
+<h4>Вік</h4>
+<input id="age"><button onclick="task1()">OK</button>
+<div id="o1" class="output"></div>
+</div>
+
+<div class="card">
+<h4>Парні</h4>
+<input id="n2"><button onclick="task2()">OK</button>
+<div id="o2" class="output"></div>
+</div>
+
+<div class="card">
+<h4>Факторіал</h4>
+<input id="n3"><button onclick="task3()">OK</button>
+<div id="o3" class="output"></div>
+</div>
+
+<div class="card">
+<h4>Калькулятор</h4>
+<input id="a"><input id="b">
+<select id="op"><option>+</option><option>-</option><option>*</option><option>/</option></select>
+<button onclick="task4()">OK</button>
+<div id="o4" class="output"></div>
+</div>
+
+<div class="card">
+<h4>Вгадай</h4>
+<input id="g"><button onclick="task5()">Try</button>
+<div id="o5" class="output"></div>
+</div>
+
+</div>
+
+<script>
+let score=0;
+function addScore(){score++;document.getElementById('score').innerText=score;}
+
+function task1(){
+let a=+age.value;
+o1.innerText=a<18?'Ні':a<=65?'OK':'Обережно';
+addScore();
+}
+
+function task2(){
+let n=+n2.value,res=[];
+for(let i=2;i<=n;i+=2)res.push(i);
+o2.innerText=res.join(',');
+addScore();
+}
+
+function task3(){
+let n=+n3.value,r=1,i=1;
+while(i<=n){r*=i;i++;}
+o3.innerText=r;
+addScore();
+}
+
+function task4(){
+let x=+a.value,y=+b.value,o=op.value;
+let r=o==='+'?x+y:o==='-'?x-y:o==='*'?x*y:y?x/y:'err';
+o4.innerText=r;
+addScore();
+}
+
+let rnd=Math.floor(Math.random()*100)+1;
+function task5(){
+let v=+g.value;
+if(v<rnd)o5.innerText='більше';
+else if(v>rnd)o5.innerText='менше';
+else{
+ o5.innerText='🎉';
+ addScore();
+ confetti();
+}
+}
+
+function confetti(){
+for(let i=0;i<40;i++){
+ let c=document.createElement('div');
+ c.className='confetti';
+ c.style.left=Math.random()*100+'vw';
+ c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+ document.body.appendChild(c);
+ setTimeout(()=>c.remove(),2000);
+}
+}
+
+function toggleTheme(){
+document.body.classList.toggle('dark');
+}
+</script>
+
+</body>
+</html>
