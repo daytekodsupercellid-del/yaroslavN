@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Практична робота: DOM та події</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Практична робота: маніпуляції DOM та обробка подій</h1>
+
+    <section id="variant1" class="card">
+      <h2>Варіант 1: Динамічне створення та сортування списку</h2>
+      <div class="controls">
+        <label for="itemInput">Введіть пункт:</label>
+        <input id="itemInput" type="text" placeholder="Текст списку">
+        <button id="addItemBtn">Додати</button>
+        <button id="sortListBtn">Сортувати А→Я</button>
+      </div>
+      <div class="info" id="variant1Message"></div>
+      <ul id="dynamicList"></ul>
+      <p>Клік на пункт списку — видалити.</p>
+    </section>
+
+    <section id="variant2" class="card">
+      <h2>Варіант 2: Динамічна зміна стилю сторінки</h2>
+      <div id="textBox" class="text-box">Цей текст можна стилізувати за допомогою панелі зверху.</div>
+      <div class="controls grid">
+        <div>
+          <label for="textColor">Колір тексту:</label>
+          <input id="textColor" type="color" value="#222222">
+        </div>
+        <div>
+          <label for="bgColor">Колір фону:</label>
+          <input id="bgColor" type="color" value="#ffffff">
+        </div>
+        <div>
+          <label for="fontSizeRange">Розмір шрифту: <span id="fontSizeValue">20</span>px</label>
+          <input id="fontSizeRange" type="range" min="12" max="48" value="20">
+        </div>
+        <div class="toggles">
+          <label><input id="boldToggle" type="checkbox"> Жирний</label>
+          <label><input id="italicToggle" type="checkbox"> Курсив</label>
+          <label><input id="underlineToggle" type="checkbox"> Підкреслення</label>
+        </div>
+        <button id="toggleTextBtn">Сховати текст</button>
+        <label class="switch-label">
+          <input id="darkModeToggle" type="checkbox">
+          <span>Dark mode</span>
+        </label>
+        <button id="resetStylesBtn">Скинути стилі</button>
+      </div>
+      <div class="info" id="variant2Message"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
