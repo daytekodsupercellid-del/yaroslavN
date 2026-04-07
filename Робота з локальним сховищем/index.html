@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Налаштування теми</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Динамічне налаштування теми</h1>
+      <p>Виберіть тему, налаштуйте кольори та збережіть власну тему в localStorage.</p>
+    </header>
+
+    <section class="panel theme-panel" aria-label="Вибір теми">
+      <h2>Оберіть тему</h2>
+      <div class="theme-options">
+        <label><input type="radio" name="theme" value="light" /> Світла</label>
+        <label><input type="radio" name="theme" value="dark" /> Темна</label>
+        <label><input type="radio" name="theme" value="colorful" /> Кольорова</label>
+      </div>
+      <div class="theme-preview" id="themePreview">
+        <p>Попередній перегляд теми</p>
+      </div>
+    </section>
+
+    <section class="panel custom-panel" aria-label="Налаштування власної теми">
+      <h2>Створіть власну тему</h2>
+      <form id="customThemeForm">
+        <div class="form-field">
+          <label for="themeName">Назва теми</label>
+          <input id="themeName" name="themeName" type="text" placeholder="Наприклад, Моя тема" required />
+        </div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="bgColor">Колір фону</label>
+            <input id="bgColor" name="bgColor" type="color" value="#ffffff" required />
+          </div>
+          <div class="form-field">
+            <label for="textColor">Колір тексту</label>
+            <input id="textColor" name="textColor" type="color" value="#000000" required />
+          </div>
+          <div class="form-field">
+            <label for="accentColor">Колір акценту</label>
+            <input id="accentColor" name="accentColor" type="color" value="#0066cc" required />
+          </div>
+        </div>
+        <input type="hidden" id="editingId" value="" />
+        <div class="form-actions">
+          <button type="submit" id="saveThemeBtn">Зберегти тему</button>
+          <button type="button" id="cancelEditBtn" class="secondary">Скинути</button>
+        </div>
+        <p class="hint">Введіть назву та кольори. Ви можете редагувати або видаляти збережені теми.</p>
+      </form>
+    </section>
+
+    <section class="panel list-panel" aria-label="Збережені теми">
+      <h2>Збережені теми</h2>
+      <div id="themesList" class="themes-list"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
