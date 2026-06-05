@@ -1,0 +1,253 @@
+:root {
+  color-scheme: light;
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --accent: #2563eb;
+  --border: rgba(31, 41, 55, 0.12);
+  --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #e5e7eb 95%);
+  color: var(--text);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --surface: #111827;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #7c3aed;
+  --border: rgba(226, 232, 240, 0.12);
+}
+
+body.colorful {
+  --bg: #fff7ed;
+  --surface: #fef3c7;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #ec4899;
+  --border: rgba(31, 41, 55, 0.12);
+}
+
+body.custom-theme {
+  background: var(--bg);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+header {
+  max-width: 780px;
+  margin-bottom: 2rem;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  letter-spacing: -0.03em;
+}
+
+p {
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+.panel:hover {
+  transform: translateY(-2px);
+}
+
+.theme-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.theme-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.theme-options input[type="radio"] {
+  accent-color: var(--accent);
+}
+
+.theme-options label:hover {
+  border-color: var(--accent);
+}
+
+.theme-preview {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.custom-panel form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="color"] {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input[type="text"]:focus,
+input[type="color"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+button {
+  border: none;
+  border-radius: 14px;
+  padding: 0.95rem 1.45rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--accent);
+  transition: transform 0.2s ease, background 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button.secondary {
+  background: rgba(31, 41, 55, 0.08);
+  color: var(--text);
+}
+
+button.secondary:hover {
+  background: rgba(31, 41, 55, 0.12);
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.themes-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.theme-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.theme-card .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.theme-card .meta strong {
+  font-size: 1rem;
+}
+
+.theme-card .theme-swatches {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.theme-card .swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.theme-card .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.theme-card .actions button {
+  padding: 0.7rem 0.95rem;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 680px) {
+  .theme-card {
+    grid-template-columns: 1fr;
+  }
+}
